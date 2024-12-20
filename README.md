@@ -1,6 +1,6 @@
 # Nextjs15 Starter Kit By Ahmed
 
-This Nextjs15 Starter Kit is designed to help you kickstart your Next.js projects with ease. It comes pre-configured with essential tools and boilerplate code, making it ideal for new projects. 
+This Nextjs15 Starter Kit is designed to help you kickstart your Next.js projects with ease. It comes pre-configured with essential tools and boilerplate code, making it ideal for new projects.
 
 ## Features
 
@@ -15,5 +15,6 @@ This Nextjs15 Starter Kit is designed to help you kickstart your Next.js project
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/nextjs15-starter-kit.git
+   git clone https://github.com/ahmed0234/Nextjs15-Starter-Kit-By-Ahmed
    cd nextjs15-starter-kit
+   ```

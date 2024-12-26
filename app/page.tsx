@@ -11,6 +11,7 @@ const Page = () => {
         <UserButton />
       </SignedIn>
       <FormValidator />
+      <h1>Hello</h1>
     </div>
   );
 };

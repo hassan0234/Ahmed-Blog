@@ -1,10 +1,16 @@
-import { UserButton } from "@clerk/nextjs";
+import FormValidator from "@/components/clients/Form";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Page = () => {
   return (
     <div className="container p-24">
-      <h1>Dashboard</h1>
-      <UserButton />
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+      <FormValidator />
     </div>
   );
 };

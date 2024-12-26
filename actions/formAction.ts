@@ -3,27 +3,35 @@
 import { z } from "zod";
 
 const formSchema = z.object({
-  name: z.string().min(3, "Name must be at least 3 characters"),
+  username: z.string().min(3, {
+    message: "Username must be at least 3 characters.",
+  }),
   email: z.string().email(),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  age: z
+    .number()
+    .int()
+    .min(18, {
+      message: "You must be at least 18 years old.",
+    })
+    .optional(),
+  MatricPass: z.boolean().default(false).optional(),
 });
-
-export const formAction = async (form: FormData) => {
-  const formData: z.infer<typeof formSchema> = {
-    name: form.get("name") as string,
-    email: form.get("email") as string,
-    password: form.get("password") as string,
-  };
-
-  const result: any = formSchema.safeParse(formData);
-  if (!result.success) {
+export const formAction = async (values: z.infer<typeof formSchema>) => {
+  const validated = formSchema.safeParse(values);
+  try {
+    if (!validated.success) {
+      throw new Error(validated.error.message);
+    }
     return {
-      success: false,
-      message: result.error.issues[0].message,
+      success: true,
+      message: "Success",
     };
+  } catch (error) {
+    if (error instanceof Error) {
+      return {
+        success: false,
+        message: error.message,
+      };
+    }
   }
-  return {
-    success: true,
-    message: "Form submitted successfully",
-  };
 };

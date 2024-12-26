@@ -1,7 +1,7 @@
-import { Webhook } from "svix";
-import { headers } from "next/headers";
-import { WebhookEvent } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
+import { WebhookEvent } from "@clerk/nextjs/server";
+import { headers } from "next/headers";
+import { Webhook } from "svix";
 
 export async function POST(req: Request) {
   const WEBHOOK_SECRET = process.env.CLERK_WEBHOOK_SECRET;
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
 
   // Verify payload with headers
   try {
-    evt = wh.verify(body, {
+    evt =  wh.verify(body, {
       "svix-id": svix_id,
       "svix-timestamp": svix_timestamp,
       "svix-signature": svix_signature,

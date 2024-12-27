@@ -36,7 +36,7 @@ export async function POST(req: Request) {
 
   // Verify payload with headers
   try {
-    evt =  wh.verify(body, {
+    evt = wh.verify(body, {
       "svix-id": svix_id,
       "svix-timestamp": svix_timestamp,
       "svix-signature": svix_signature,
@@ -52,25 +52,31 @@ export async function POST(req: Request) {
   // For this guide, log payload to console
 
   const eventType = evt.type;
-
-  if (eventType === "user.created") {
-    await db.user.create({
-      data: {
-        externalUserId: payload.data.id,
-        username: payload.data.username,
-        imageUrl: payload.data.image_url,
-      },
-    });
+  try {
+    if (eventType === "user.created") {
+      await db.user.create({
+        data: {
+          clerkId: payload.data.id,
+          username: payload.data.username,
+          imageUrl: payload.data.image_url,
+          email: payload.data.email_addresses[0].email_address,
+        },
+      });
+    }
+  } catch (error) {
+    console.log(`Error in User Creation: ${error}`);
   }
 
   if (eventType === "user.updated") {
     await db.user.update({
       where: {
-        externalUserId: payload.data.id,
+        clerkId: payload.data.id,
       },
       data: {
+        clerkId: payload.data.id,
         username: payload.data.username,
         imageUrl: payload.data.image_url,
+        email: payload.data.email_addresses[0].email_address,
       },
     });
   }
@@ -78,7 +84,7 @@ export async function POST(req: Request) {
   if (eventType === "user.deleted") {
     await db.user.delete({
       where: {
-        externalUserId: payload.data.id,
+        clerkId: payload.data.id,
       },
     });
   }

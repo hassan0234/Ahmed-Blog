@@ -14,8 +14,8 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <Code2 className="h-6 w-6" />
-          <span className="inline-block font-semibold text-2xl md:text-3xl font-bilbo">
-            Ahmed
+          <span className="inline-block font-semibold text-2xl md:text-3xl  font-bilbo">
+            Ahmed Files
           </span>
         </Link>
 

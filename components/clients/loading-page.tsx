@@ -14,7 +14,7 @@ export default function DarkLoadingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-zinc-950">
       <div className="w-full max-w-md px-4 text-center">
         <div className="mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">

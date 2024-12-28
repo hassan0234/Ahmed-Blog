@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/blog", label: "Blog" },
+  { href: "/user/create", label: "Create" },
+  { href: "/user/blogs", label: "Your Blogs" },
+  { href: "/premium", label: "Premium Blogs" },
 ];
 
 export function NavLinks() {

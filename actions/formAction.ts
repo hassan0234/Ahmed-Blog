@@ -49,7 +49,7 @@ export async function formAction(
       success: true,
       message: "Post created successfully",
     };
-  } catch (error) {
+  } catch (error: any) {
     return {
       success: false,
       message: error.message,

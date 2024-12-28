@@ -55,7 +55,7 @@ export function PostForm() {
       toast.success("Post created successfully!");
       form.reset();
       setImageUrl("");
-    } catch (error) {
+    } catch (error: any) {
       toast.error(error.message);
     }
   }
